@@ -2,8 +2,9 @@ import pyfiglet
 from termcolor import colored
 
 def display_banner():
-    banner_tool = pyfiglet.figlet_format("Password Strength Checker", font="slant")
-    banner_by = pyfiglet.figlet_format("By LIX Hack", font="slant")
+    # Using 'starwars' font for a more hacking-like appearance (you can experiment with other fonts too)
+    banner_tool = pyfiglet.figlet_format("Password Strength Checker", font="starwars")
+    banner_by = pyfiglet.figlet_format("By LIX Hack", font="starwars")
     print(colored(banner_tool, "green"))
     print(colored(banner_by, "red"))
     print()
@@ -14,7 +15,6 @@ def check_password_strength(password):
     has_lower = any(char.islower() for char in password)
     has_digit = any(char.isdigit() for char in password)
     has_special = any(not char.isalnum() for char in password)
-
     score = 0
     if length >= 8:
         score += 1
@@ -26,7 +26,6 @@ def check_password_strength(password):
         score += 1
     if has_special:
         score += 1
-
     if score <= 2:
         return "Weak", "red"
     elif score == 3:
